@@ -1827,15 +1827,14 @@ class DiscordLevelingSystem:
                 v0.0.2
                     Added check to ensure the first value is larger than the next
                     Added check to ensure the each value is unique
-                    Changed the value range from 1-100 to 1-25
                 v1.1.0
                     Changed from list to Sequence
         """
         if isinstance(arg, (int, Sequence)):
             if isinstance(arg, int):
-                # ensures the values are from 1-25
-                if arg <= 0 or arg > 25:
-                    raise DiscordLevelingSystemError('Parameter "amount" can only be a value from 1-25')
+                # ensures the values are from 1-100
+                if arg <= 0 or arg > 100:
+                    raise DiscordLevelingSystemError('Parameter "amount" can only be a value from 1-100')
             else:
                 # ensures there are only 2 values in the sequence
                 if len(arg) != 2:
@@ -1846,10 +1845,10 @@ class DiscordLevelingSystem:
                     if not isinstance(item, int):
                         raise DiscordLevelingSystemError('Parameter "amount" sequence, all values must be of type int')
                 
-                # ensures all values in the sequence are >= 1 and <= 25
+                # ensures all values in the sequence are >= 1 and <= 100
                 for item in arg:
                     if item <= 0 or item > 25:
-                        raise DiscordLevelingSystemError('Parameter "amount" sequence, all values can only be from 1-25')
+                        raise DiscordLevelingSystemError('Parameter "amount" sequence, all values can only be from 1-100')
                 
                 # ensures each value is unique
                 if arg[0] == arg[1]:
