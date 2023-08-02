@@ -1847,7 +1847,7 @@ class DiscordLevelingSystem:
                 
                 # ensures all values in the sequence are >= 1 and <= 100
                 for item in arg:
-                    if item <= 0 or item > 25:
+                    if item <= 0 or item > 100:
                         raise DiscordLevelingSystemError('Parameter "amount" sequence, all values can only be from 1-100')
                 
                 # ensures each value is unique
